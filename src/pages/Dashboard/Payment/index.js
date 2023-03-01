@@ -10,11 +10,15 @@ import { useState } from 'react';
 
 export default function Payment() {
   const { enrollment, enrollmentLoading } = useEnrollment();
-  const { ticket } = useTicket();
-  const [paymentArea, setPaymentArea] = useState(ticket);
+  const { ticket, ticketLoading } = useTicket();
+
   if (enrollmentLoading) {
     return <Splash loading />;
   }
+  if (ticketLoading) {
+    return <Splash loading />;
+  }
+
   if (!enrollment) {
     return (
       <>
@@ -31,7 +35,7 @@ export default function Payment() {
   return (
     <>
       <StyledTypography variant="h4">Ingresso e pagamento</StyledTypography>
-      {paymentArea?.status === 'RESERVED' ? <PaymentArea /> : <TicketArea setPaymentArea={setPaymentArea}/>}
+      {ticket.status === 'RESERVED' ? <PaymentArea /> : <TicketArea />}
     </>
   );
 }

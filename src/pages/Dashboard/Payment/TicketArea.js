@@ -5,7 +5,7 @@ import Button from '../../../components/Button';
 import styled from 'styled-components';
 import Text from '../../../components/Text';
 import { useTicket } from '../../../hooks/api/useTicket';
-export default function TicketArea({ setPaymentArea }) {
+export default function TicketArea() {
   const { ticketTypes, ticketTypesLoading } = useTicketTypes();
   const [selectedTicketType, setSelectedTicketType] = useState({});
   const { ticket } = useTicket();
@@ -32,7 +32,14 @@ export default function TicketArea({ setPaymentArea }) {
         {ticketTypes.map(
           (t) =>
             !t.includesHotel && (
-              <Button text1={t.name} text2={t.price} width={145} key={t.id} onClick={() => setSelectedTicketType(t)} />
+              <Button
+                text1={t.name}
+                text2={t.price}
+                width={145}
+                key={t.id}
+                color={selectedTicketType.id === t.id ? '#ffeed2' : '#ffffff'}
+                onClick={() => setSelectedTicketType(t)}
+              />
             )
         )}
       </AlignBox2>

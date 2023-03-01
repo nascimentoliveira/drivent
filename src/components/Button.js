@@ -10,9 +10,9 @@ export default function Button({ text1, text2, ...props }) {
 }
 
 const ButtonStyle = styled.div`
-  height: ${(props) => props.height? props.height: 145}px;
-  width: ${(props) => props.width? props.width:145}px;
-  background-color:${(props) => props.color};
+  height: ${(props) => (props.height ? props.height : 145)}px;
+  width: ${(props) => (props.width ? props.width : 145)}px;
+  background-color: ${(props) => (props.color ? props.color : '#ffffff')};
   border: 1px solid #cfcfcf;
   border-radius: 20px;
   display: flex;
