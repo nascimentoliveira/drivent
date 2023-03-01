@@ -5,6 +5,7 @@ import Text from '../../../components/Text';
 import styled from 'styled-components';
 import Typography from '@material-ui/core/Typography';
 import { useTicket } from '../../../hooks/api/useTicket';
+import PaymentArea from './PaymentArea';
 
 export default function Payment() {
   const { enrollment, enrollmentLoading } = useEnrollment();
@@ -29,7 +30,7 @@ export default function Payment() {
   return (
     <>
       <StyledTypography variant="h4">Inscrição e pagamento</StyledTypography>
-      {ticket?.status === 'RESERVED' ? <> Página de pagamento</> : <TicketTypes />}
+      {ticket?.status === 'RESERVED' ? <PaymentArea /> : <TicketTypes />}
     </>
   );
 }

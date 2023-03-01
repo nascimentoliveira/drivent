@@ -38,7 +38,7 @@ export default function TicketTypes() {
         {ticketTypes.map(
           (t) =>
             !t.includesHotel && (
-              <Button text1={t.name} text2={t.price} key={t.id} onClick={() => setSelectedTicketType(t)} />
+              <Button text1={t.name} text2={t.price} width ={145} key={t.id} onClick={() => setSelectedTicketType(t)} />
             )
         )}
       </AlignBox2>
@@ -54,7 +54,7 @@ export default function TicketTypes() {
   );
 }
 
-const AlignBox2 = styled.div`
+export const AlignBox2 = styled.div`
   margin-top: 17px;
   display: flex;
   flex-direction: row;
