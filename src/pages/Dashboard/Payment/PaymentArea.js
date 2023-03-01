@@ -8,11 +8,26 @@ export default function PaymentArea() {
   if (ticketLoading) {
     return <Splash loading />;
   }
+  function summaryTitle() {
+    if (ticket.TicketType.isRemote) {
+      return ticket.TicketType.name;
+    }
+    if (ticket.TicketType.includesHotel) {
+      return `${ticket.TicketType.name} + Com Hotel `;
+    }
+    return `${ticket.TicketType.name} Sem Hotel `;
+  }
   return (
     <>
-      <Text text={'Primeiro, escolha sua modalidade de ingresso'}></Text>
+      <Text text={'Ingresso Escolhido'}></Text>
       <AlignBox2>
-        <Button text1={ticket.TicketType.name} text2={ticket.TicketType.price} width={200} color={'#ffeed2'} />
+        <Button
+          text1={summaryTitle()}
+          text2={ticket.TicketType.price}
+          width={290}
+          height={108}
+          color={'#ffeed2'}
+        />
       </AlignBox2>
     </>
   );

@@ -4,14 +4,14 @@ export default function Button({ text1, text2, ...props }) {
   return (
     <ButtonStyle {...props}>
       <Text1Style>{`${text1}`}</Text1Style>
-      <Text2Style>{`${text2}`}</Text2Style>
+      <Text2Style>{`R$ ${text2}`}</Text2Style>
     </ButtonStyle>
   );
 }
 
 const ButtonStyle = styled.div`
-  height: 145px;
-  width: ${(props) => props.width}px;
+  height: ${(props) => props.height? props.height: 145}px;
+  width: ${(props) => props.width? props.width:145}px;
   background-color:${(props) => props.color};
   border: 1px solid #cfcfcf;
   border-radius: 20px;
