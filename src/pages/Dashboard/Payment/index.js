@@ -1,14 +1,15 @@
-import { useState } from 'react';
 import Splash from '../../../components/Splash';
 import useEnrollment from '../../../hooks/api/useEnrollment';
 import TicketTypes from './TicketTypes';
 import Text from '../../../components/Text';
 import styled from 'styled-components';
 import Typography from '@material-ui/core/Typography';
+import { useTicket } from '../../../hooks/api/useTicket';
 
 export default function Payment() {
   const { enrollment, enrollmentLoading } = useEnrollment();
-  const [isReserved, setIsReserved] = useState(false); // aqui irei criar um hook para ver se tem ticket reservado no banco de dados
+  const { ticket } = useTicket();
+  console.log(ticket);
   if (enrollmentLoading) {
     return <Splash loading />;
   }
@@ -24,14 +25,11 @@ export default function Payment() {
       </>
     );
   }
-  if (isReserved) {
-    return <> Página de pagamento</>;
-  }
+
   return (
     <>
       <StyledTypography variant="h4">Inscrição e pagamento</StyledTypography>
-      <Text text={'Primeiro, escolha sua modalidade de ingresso'}></Text>
-      <TicketTypes />
+      {ticket?.status === 'RESERVED' ? <> Página de pagamento</> : <TicketTypes />}
     </>
   );
 }

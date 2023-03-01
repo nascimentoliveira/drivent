@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import Splash from '../../../components/Splash';
-import useTicketTypes from '../../../hooks/api/useTickets';
+import useTicketTypes from '../../../hooks/api/useTicketsType';
 import Button from '../../../components/Button';
 import styled from 'styled-components';
-
+import Text from '../../../components/Text';
 export default function TicketTypes() {
   const { ticketTypes, ticketTypesLoading } = useTicketTypes();
   const [selectedTicketType, setSelectedTicketType] = useState({
@@ -33,19 +33,19 @@ export default function TicketTypes() {
 
   return (
     <>
+      <Text text={'Primeiro, escolha sua modalidade de ingresso'}></Text>
       <AlignBox2>
-        {ticketTypes.map((t) =>
-          t.includesHotel ? (
-            <></>
-          ) : (
-            <Button text1={t.name} text2={t.price} key={t.id} onClick={() => setSelectedTicketType(t)} />
-          )
+        {ticketTypes.map(
+          (t) =>
+            !t.includesHotel && (
+              <Button text1={t.name} text2={t.price} key={t.id} onClick={() => setSelectedTicketType(t)} />
+            )
         )}
       </AlignBox2>
 
-      {selectedTicketType.isRemote ===false ?(
+      {selectedTicketType.isRemote === false ? (
         <p onClick={hotel}> abre o componente de hospedagem</p>
-      ) : selectedTicketType.isRemote===true ? (
+      ) : selectedTicketType.isRemote === true ? (
         <p onClick={bookTicket}>abre componente reservar ingresso</p>
       ) : (
         <></>
