@@ -6,15 +6,7 @@ import styled from 'styled-components';
 import Text from '../../../components/Text';
 export default function TicketArea() {
   const { ticketTypes, ticketTypesLoading } = useTicketTypes();
-  const [selectedTicketType, setSelectedTicketType] = useState({
-    createdAt: '',
-    id: '',
-    includesHotel: '',
-    isRemote: '',
-    name: '',
-    price: '',
-    updatedAt: '',
-  });
+  const [selectedTicketType, setSelectedTicketType] = useState({});
   const [hotelPrice, setHotelPrice] = useState(0);
   if (ticketTypesLoading) {
     return <Splash loading />;
@@ -38,14 +30,14 @@ export default function TicketArea() {
         {ticketTypes.map(
           (t) =>
             !t.includesHotel && (
-              <Button text1={t.name} text2={t.price} width ={145} key={t.id} onClick={() => setSelectedTicketType(t)} />
+              <Button text1={t.name} text2={t.price} width={145} key={t.id} onClick={() => setSelectedTicketType(t)} />
             )
         )}
       </AlignBox2>
 
-      {selectedTicketType.isRemote === false ? (
+      {selectedTicketType?.isRemote === false ? (
         <p onClick={hotel}> abre o componente de hospedagem</p>
-      ) : selectedTicketType.isRemote === true ? (
+      ) : selectedTicketType?.isRemote === true ? (
         <p onClick={bookTicket}>abre componente reservar ingresso</p>
       ) : (
         <></>
