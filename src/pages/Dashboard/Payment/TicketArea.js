@@ -5,7 +5,7 @@ import Button from '../../../components/Button';
 import styled from 'styled-components';
 import Text from '../../../components/Text';
 import { useTicket } from '../../../hooks/api/useTicket';
-export default function TicketArea({setPaymentArea}) {
+export default function TicketArea({ setPaymentArea }) {
   const { ticketTypes, ticketTypesLoading } = useTicketTypes();
   const [selectedTicketType, setSelectedTicketType] = useState({});
   const { ticket } = useTicket();
