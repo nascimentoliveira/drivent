@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import Splash from '../../../components/Splash';
 import useTicketTypes from '../../../hooks/api/useTickets';
+import Button from '../../../components/Button';
+import styled from 'styled-components';
 
 export default function TicketTypes() {
   const { ticketTypes, ticketTypesLoading } = useTicketTypes();
@@ -14,12 +16,14 @@ export default function TicketTypes() {
       return ticket[0].id;
     }
   }
-
+  console.log(selectedTicketType);
   return (
     <>
-      <h3>Primeiro,escolha sua modalidade de ingresso</h3>
-      <button onClick={() => setSelectedTicketType('Online')}>Online</button>
-      <button onClick={() => setSelectedTicketType('Presencial')}>Presencial</button>
+      <AlignBox2>
+        {ticketTypes.map((t) => (
+          <Button text1={t.name} text2={t.price} key={t.id} onClick={() => setSelectedTicketType(t.name)} />
+        ))}
+      </AlignBox2>
 
       {selectedTicketType === 'Presencial' ? (
         <p> abre o componente de hospedagem</p>
@@ -31,3 +35,10 @@ export default function TicketTypes() {
     </>
   );
 }
+
+const AlignBox2 = styled.div`
+  margin-top: 17px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+`;
