@@ -4,7 +4,7 @@ import useTicketTypes from '../../../hooks/api/useTicketsType';
 import Button from '../../../components/Button';
 import styled from 'styled-components';
 import Text from '../../../components/Text';
-export default function TicketTypes() {
+export default function TicketArea() {
   const { ticketTypes, ticketTypesLoading } = useTicketTypes();
   const [selectedTicketType, setSelectedTicketType] = useState({
     createdAt: '',

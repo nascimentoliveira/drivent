@@ -2,7 +2,7 @@ import Button from '../../../components/Button';
 import Splash from '../../../components/Splash';
 import Text from '../../../components/Text';
 import { useTicket } from '../../../hooks/api/useTicket';
-import { AlignBox2 } from './TicketTypes';
+import { AlignBox2 } from './TicketArea';
 export default function PaymentArea() {
   const { ticket, ticketLoading } = useTicket();
   if (ticketLoading) {

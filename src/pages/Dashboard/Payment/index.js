@@ -1,6 +1,6 @@
 import Splash from '../../../components/Splash';
 import useEnrollment from '../../../hooks/api/useEnrollment';
-import TicketTypes from './TicketTypes';
+import TicketArea from './TicketArea';
 import Text from '../../../components/Text';
 import styled from 'styled-components';
 import Typography from '@material-ui/core/Typography';
@@ -10,7 +10,6 @@ import PaymentArea from './PaymentArea';
 export default function Payment() {
   const { enrollment, enrollmentLoading } = useEnrollment();
   const { ticket } = useTicket();
-  console.log(ticket);
   if (enrollmentLoading) {
     return <Splash loading />;
   }
@@ -30,7 +29,7 @@ export default function Payment() {
   return (
     <>
       <StyledTypography variant="h4">Inscrição e pagamento</StyledTypography>
-      {ticket?.status === 'RESERVED' ? <PaymentArea /> : <TicketTypes />}
+      {ticket?.status === 'RESERVED' ? <PaymentArea /> : <TicketArea />}
     </>
   );
 }
