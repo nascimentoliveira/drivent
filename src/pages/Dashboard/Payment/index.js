@@ -1,12 +1,14 @@
+import { useState } from 'react';
 import Splash from '../../../components/Splash';
-import Text from '../../../components/Text';
 import useEnrollment from '../../../hooks/api/useEnrollment';
+import TicketTypes from './TicketTypes';
+import Text from '../../../components/Text';
 import styled from 'styled-components';
 import Typography from '@material-ui/core/Typography';
-import Button from '../../../components/Button';
 
 export default function Payment() {
   const { enrollment, enrollmentLoading } = useEnrollment();
+  const [isReserved, setIsReserved] = useState(false);
   if (enrollmentLoading) {
     return <Splash loading />;
   }
@@ -22,39 +24,31 @@ export default function Payment() {
       </>
     );
   }
-
+  if (isReserved) {
+    return <> Página de pagamento</>;
+  }
   return (
     <>
       <StyledTypography variant="h4">Inscrição e pagamento</StyledTypography>
       <Text text={'Primeiro, escolha sua modalidade de ingresso'}></Text>
-      <AlignBox2>
-        <Button text1={'Presencial'} text2={'R$ 200'}></Button>
-        <Button text1={'Online'} text2={'R$ 150'}></Button>
-      </AlignBox2>
+      <TicketTypes />
     </>
   );
 }
 
 const StyledTypography = styled(Typography)`
-  margin-bottom: 20px!important;
+  margin-bottom: 20px !important;
 `;
 
 const TextBox = styled.div`
-width:388px;
-height: 46px;
-text-align: center;
+  width: 388px;
+  height: 46px;
+  text-align: center;
 `;
 
 const AlignBox = styled.div`
-height: 440px;
-display: flex;
-justify-content: center;
-align-items: center;
-`;
-
-const AlignBox2 = styled.div`
-margin-top: 17px;
-display: flex;
-flex-direction: row;
-align-items: center;
+  height: 440px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
