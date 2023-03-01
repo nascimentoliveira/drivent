@@ -8,7 +8,7 @@ import Typography from '@material-ui/core/Typography';
 
 export default function Payment() {
   const { enrollment, enrollmentLoading } = useEnrollment();
-  const [isReserved, setIsReserved] = useState(false);
+  const [isReserved, setIsReserved] = useState(false); // aqui irei criar um hook para ver se tem ticket reservado no banco de dados
   if (enrollmentLoading) {
     return <Splash loading />;
   }
