@@ -4,9 +4,11 @@ import useTicketTypes from '../../../hooks/api/useTicketsType';
 import Button from '../../../components/Button';
 import styled from 'styled-components';
 import Text from '../../../components/Text';
-export default function TicketArea() {
+import { useTicket } from '../../../hooks/api/useTicket';
+export default function TicketArea({setPaymentArea}) {
   const { ticketTypes, ticketTypesLoading } = useTicketTypes();
   const [selectedTicketType, setSelectedTicketType] = useState({});
+  const { ticket } = useTicket();
   const [hotelPrice, setHotelPrice] = useState(0);
   if (ticketTypesLoading) {
     return <Splash loading />;

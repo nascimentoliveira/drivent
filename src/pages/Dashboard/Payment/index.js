@@ -6,10 +6,12 @@ import styled from 'styled-components';
 import Typography from '@material-ui/core/Typography';
 import { useTicket } from '../../../hooks/api/useTicket';
 import PaymentArea from './PaymentArea';
+import { useState } from 'react';
 
 export default function Payment() {
   const { enrollment, enrollmentLoading } = useEnrollment();
   const { ticket } = useTicket();
+  const [paymentArea, setPaymentArea] = useState(ticket);
   if (enrollmentLoading) {
     return <Splash loading />;
   }
@@ -29,7 +31,7 @@ export default function Payment() {
   return (
     <>
       <StyledTypography variant="h4">Inscrição e pagamento</StyledTypography>
-      {ticket?.status === 'RESERVED' ? <PaymentArea /> : <TicketArea />}
+      {paymentArea?.status === 'RESERVED' ? <PaymentArea /> : <TicketArea setPaymentArea={setPaymentArea}/>}
     </>
   );
 }
