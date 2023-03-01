@@ -14,6 +14,6 @@ export default function useTicketTypes() {
   return {
     ticketTypes,
     ticketTypesLoading,
-    ticketTypesError,
+    ticketTypesError
   };
 }
