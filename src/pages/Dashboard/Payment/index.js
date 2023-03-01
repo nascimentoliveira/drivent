@@ -18,7 +18,7 @@ export default function Payment() {
   if (!enrollment) {
     return (
       <>
-        <StyledTypography variant="h4">Inscrição e pagamento</StyledTypography>
+        <StyledTypography variant="h4">Ingresso e pagamento</StyledTypography>
         <AlignBox>
           <TextBox>
             <Text text={'Você precisa completar sua inscrição antes de prosseguir pra escolha de ingresso'}></Text>
@@ -30,7 +30,7 @@ export default function Payment() {
 
   return (
     <>
-      <StyledTypography variant="h4">Inscrição e pagamento</StyledTypography>
+      <StyledTypography variant="h4">Ingresso e pagamento</StyledTypography>
       {paymentArea?.status === 'RESERVED' ? <PaymentArea /> : <TicketArea setPaymentArea={setPaymentArea}/>}
     </>
   );
