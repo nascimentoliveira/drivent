@@ -1,7 +1,7 @@
 import useAsync from '../useAsync';
 import useToken from '../useToken';
 
-import * as ticketTypesApi from '../../services/ticketTypesApi';
+import * as ticketTypesApi from '../../services/ticketsApi';
 
 export default function useTicketTypes() {
   const token = useToken();

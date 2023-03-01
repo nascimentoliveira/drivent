@@ -1,21 +1,33 @@
-import { useState } from 'react';
 import Splash from '../../../components/Splash';
 import useEnrollment from '../../../hooks/api/useEnrollment';
-import TicketTypes from './TicketTypes';
+import TicketArea from './TicketArea';
 import Text from '../../../components/Text';
 import styled from 'styled-components';
 import Typography from '@material-ui/core/Typography';
+import { useTicket } from '../../../hooks/api/useTicket';
+import PaymentArea from './PaymentArea';
+import { useEffect, useState } from 'react';
 
 export default function Payment() {
   const { enrollment, enrollmentLoading } = useEnrollment();
-  const [isReserved, setIsReserved] = useState(false);
+  const { ticket, ticketLoading } = useTicket();
+  useEffect(() => {
+    if (ticket) {
+      setPaymentArea(true);
+    }
+  }, [ticket]);
+  const [paymentArea, setPaymentArea] = useState(false);
   if (enrollmentLoading) {
     return <Splash loading />;
   }
+  if (ticketLoading) {
+    return <Splash loading />;
+  }
+
   if (!enrollment) {
     return (
       <>
-        <StyledTypography variant="h4">Inscrição e pagamento</StyledTypography>
+        <StyledTypography variant="h4">Ingresso e pagamento</StyledTypography>
         <AlignBox>
           <TextBox>
             <Text text={'Você precisa completar sua inscrição antes de prosseguir pra escolha de ingresso'}></Text>
@@ -24,14 +36,11 @@ export default function Payment() {
       </>
     );
   }
-  if (isReserved) {
-    return <> Página de pagamento</>;
-  }
+
   return (
     <>
-      <StyledTypography variant="h4">Inscrição e pagamento</StyledTypography>
-      <Text text={'Primeiro, escolha sua modalidade de ingresso'}></Text>
-      <TicketTypes />
+      <StyledTypography variant="h4">Ingresso e pagamento</StyledTypography>
+      {paymentArea ? <PaymentArea /> : <TicketArea setPaymentArea={setPaymentArea} />}
     </>
   );
 }
