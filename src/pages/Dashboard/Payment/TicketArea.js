@@ -5,6 +5,8 @@ import Button from '../../../components/Button';
 import styled from 'styled-components';
 import Text from '../../../components/Text';
 import { useTicket } from '../../../hooks/api/useTicket';
+import ConfirmBooking from '../../../components/Dashboard/Payment/ConfirmBooking';
+
 export default function TicketArea() {
   const { ticketTypes, ticketTypesLoading } = useTicketTypes();
   const [selectedTicketType, setSelectedTicketType] = useState({});
@@ -46,7 +48,7 @@ export default function TicketArea() {
       {selectedTicketType?.isRemote === false ? (
         <p onClick={hotel}> abre o componente de hospedagem</p>
       ) : selectedTicketType?.isRemote === true ? (
-        <p onClick={bookTicket}>abre componente reservar ingresso</p>
+        <p onClick={bookTicket}><ConfirmBooking ticketType={selectedTicketType}/></p>
       ) : (
         <></>
       )}
