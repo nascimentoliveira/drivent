@@ -17,7 +17,9 @@ export default function ConfirmBooking({ ticketType }) {
 
   return (
     <ConfirmBookingStyle>
-      <ConfirmBookingMessage>Fechado! O total ficou em R$ {ticketType.price}. Agora é só confirmar:</ConfirmBookingMessage>
+      <ConfirmBookingMessage>
+        Fechado! O total ficou em R$ {ticketType.price}. Agora é só confirmar:
+      </ConfirmBookingMessage>
       <ConfirmBookingButton onClick={submit} disabled={loadingSaveTicket}>
         RESERVAR INGRESSO
       </ConfirmBookingButton>
