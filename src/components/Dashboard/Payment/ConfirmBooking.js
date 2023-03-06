@@ -2,13 +2,14 @@ import styled from 'styled-components';
 import { toast } from 'react-toastify';
 import useSaveTicket from '../../../hooks/api/useSaveTicket';
 
-export default function ConfirmBooking({ ticketType }) {
+export default function ConfirmBooking({ setPaymentArea, ticketType }) {
   const { loadingSaveTicket, saveTicket } = useSaveTicket();
 
   async function submit(event) {
     event.preventDefault();
     try {
       await saveTicket({ 'ticketTypeId': ticketType.id });
+      setPaymentArea(true);
       toast('Seu ingresso foi reservado com sucesso!');
     } catch (error) {
       toast('Não foi possível reservar o seu ingresso!');
@@ -29,7 +30,6 @@ export default function ConfirmBooking({ ticketType }) {
 
 const ConfirmBookingStyle = styled.section`
   width: 100%;
-  height: 140px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -42,7 +42,7 @@ const ConfirmBookingMessage = styled.div`
   font-size: 20px;
   line-height: 23px;
   color: #8E8E8E;
-  margin: 17px 0;
+  margin-bottom: 17px;
 `;
 
 const ConfirmBookingButton = styled.button`

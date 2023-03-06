@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Splash from '../../../components/Splash';
 import Cards from 'react-credit-cards';
 import 'react-credit-cards/es/styles-compiled.css';
 import styled from 'styled-components';
@@ -9,9 +10,11 @@ import Button from '../../Form/Button';
 import Text from '../../Text';
 import ConfirmPayment from './ConfirmPayment';
 import ChosenTicket from './ChosenTicket';
+import { useTicket } from '../../../hooks/api/useTicket';
 
 export default function PaymentArea({ ticket, getTickets }) {
   const { savePayment } = useSavePayment();
+  const { ticketLoading } = useTicket();
   const [cardData, setCardData] = useState({
     cvc: '',
     expiry: '',
@@ -63,6 +66,10 @@ export default function PaymentArea({ ticket, getTickets }) {
       name: '',
       number: '',
     });
+  }
+
+  if (ticketLoading) {
+    return <Splash loading />;
   }
 
   return (
@@ -131,7 +138,10 @@ export default function PaymentArea({ ticket, getTickets }) {
           <Button type="submit" onClick={handleSubmit}>FINALIZAR PAGAMENTO</Button>
         </>
       ) : (
-        <ConfirmPayment />
+        <>
+          <ChosenTicket />
+          <ConfirmPayment />
+        </>
       )}
     </>
   );
