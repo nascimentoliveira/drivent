@@ -1,9 +1,10 @@
-import Button from '../../../components/Button';
-import Splash from '../../../components/Splash';
-import Text from '../../../components/Text';
+import styled from 'styled-components';
+import Button from '../../Button';
+import Splash from '../../Splash';
+import Text from '../../Text';
 import { useTicket } from '../../../hooks/api/useTicket';
-import { AlignBox2 } from './TicketArea';
-export default function PaymentArea() {
+import { AlignBox2 } from '../../../pages/Dashboard/Payment/TicketArea';
+export default function ChosenTicket() {
   const { ticket, ticketLoading } = useTicket();
   if (ticketLoading) {
     return <Splash loading />;
@@ -18,7 +19,7 @@ export default function PaymentArea() {
     return `${ticket.TicketType.name} Sem Hotel `;
   }
   return (
-    <>
+    <ChosenTicketContainer>
       <Text text={'Ingresso Escolhido'}></Text>
       <AlignBox2>
         <Button
@@ -29,6 +30,10 @@ export default function PaymentArea() {
           color={'#ffeed2'}
         />
       </AlignBox2>
-    </>
+    </ChosenTicketContainer>
   );
 }
+
+const ChosenTicketContainer = styled.div`
+  margin-bottom: 20px;
+`;
