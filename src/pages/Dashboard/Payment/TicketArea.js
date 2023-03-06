@@ -46,7 +46,7 @@ export default function TicketArea() {
       </AlignBox2>
 
       {selectedTicketType?.isRemote === false ? (
-        <p onClick={hotel}> abre o componente de hospedagem</p>
+        <p onClick={hotel}><ConfirmBooking ticketType={selectedTicketType}/></p>
       ) : selectedTicketType?.isRemote === true ? (
         <p onClick={bookTicket}><ConfirmBooking ticketType={selectedTicketType}/></p>
       ) : (
