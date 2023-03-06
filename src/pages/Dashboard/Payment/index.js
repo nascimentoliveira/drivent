@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import Splash from '../../../components/Splash';
 import useEnrollment from '../../../hooks/api/useEnrollment';
 import TicketArea from './TicketArea';
@@ -5,19 +6,17 @@ import Text from '../../../components/Text';
 import styled from 'styled-components';
 import Typography from '@material-ui/core/Typography';
 import { useTicket } from '../../../hooks/api/useTicket';
-/* import ChosenTicket from '../../../components/Dashboard/Payment/ChosenTicket'; */
-/* import { useEffect, useState } from 'react'; */
 import PaymentArea from '../../../components/Dashboard/Payment/PaymentArea';
 
 export default function Payment() {
   const { enrollment, enrollmentLoading } = useEnrollment();
   const { ticket, ticketLoading, getTickets } = useTicket();
-  /*   useEffect(() => {
-    if (ticket) {
-      setPaymentArea(true);
-    }
-  }, [ticket]);
-  const [paymentArea, setPaymentArea] = useState(false); */
+  const [paymentArea, setPaymentArea] = useState(false);
+
+  useEffect(async() => {
+    await getTickets();
+  }, [paymentArea]);
+
   if (enrollmentLoading) {
     return <Splash loading />;
   }
@@ -41,12 +40,7 @@ export default function Payment() {
   return (
     <>
       <StyledTypography variant="h4">Ingresso e pagamento</StyledTypography>
-      {/* {paymentArea ? <ChosenTicket /> : <TicketArea setPaymentArea={setPaymentArea} />} */}
-      {!ticket ? (
-        <TicketArea />
-      ) : (
-        <PaymentArea ticket={ticket} getTickets={getTickets} />
-      )}
+      {!paymentArea && !ticket ? <TicketArea setPaymentArea={setPaymentArea}/>: <PaymentArea ticket={ticket} getTickets={getTickets} />}
     </>
   );
 }

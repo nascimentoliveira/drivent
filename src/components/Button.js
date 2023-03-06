@@ -20,6 +20,7 @@ const ButtonStyle = styled.div`
   justify-content: center;
   align-items: center;
   margin-right: 24px;
+  cursor: pointer;
 `;
 
 const Text1Style = styled.div`
