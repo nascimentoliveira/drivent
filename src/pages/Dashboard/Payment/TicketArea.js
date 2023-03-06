@@ -39,6 +39,7 @@ export default function TicketArea() {
                 text2={t.price}
                 width={145}
                 key={t.id}
+                color={(selectedTicketType.id === t.id) ? '#FFEED2' : ''}
                 onClick={() => setSelectedTicketType(t)}
               />
             )
