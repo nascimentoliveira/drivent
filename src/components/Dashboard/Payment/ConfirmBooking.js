@@ -8,7 +8,7 @@ export default function ConfirmBooking({ setPaymentArea, ticketType }) {
   async function submit(event) {
     event.preventDefault();
     try {
-      await saveTicket({ 'ticketTypeId': ticketType.id });
+      await saveTicket({ ticketTypeId: ticketType.id });
       setPaymentArea(true);
       toast('Seu ingresso foi reservado com sucesso!');
     } catch (error) {
@@ -28,27 +28,27 @@ export default function ConfirmBooking({ setPaymentArea, ticketType }) {
   );
 }
 
-const ConfirmBookingStyle = styled.section`
+export const ConfirmBookingStyle = styled.section`
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
 `;
 
-const ConfirmBookingMessage = styled.div`
+export const ConfirmBookingMessage = styled.div`
   font-family: 'Roboto', sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 20px;
   line-height: 23px;
-  color: #8E8E8E;
+  color: #8e8e8e;
   margin-bottom: 17px;
 `;
 
-const ConfirmBookingButton = styled.button`
+export const ConfirmBookingButton = styled.button`
   width: 162px;
   height: 37px;
-  background-color: #E0E0E0;
+  background-color: #e0e0e0;
   box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.25);
   border-radius: 4px;
   border: none;
@@ -64,6 +64,6 @@ const ConfirmBookingButton = styled.button`
 
   &:hover {
     cursor: pointer;
-    background-color: #EFEFEF;
+    background-color: #efefef;
   }
 `;
