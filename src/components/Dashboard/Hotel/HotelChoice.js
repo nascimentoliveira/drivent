@@ -2,12 +2,18 @@ import { useHotelRooms } from '../../../hooks/api/useHotelRooms';
 import Splash from '../../Splash';
 import styled from 'styled-components';
 import RoomContainer from './RoomContainer';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Text from '../../Text';
 import ConfirmRoom from './ConfirmRoom';
+
 export default function HotelChoice({ hotelId }) {
-  const { hotelWithRooms, hotelWithRoomsLoading, hotelWithRoomsError } = useHotelRooms(hotelId);
+  const { hotelWithRooms, hotelWithRoomsLoading, getHotelWithRooms } = useHotelRooms(hotelId);
   const [choosenRoom, setChoosenRoom] = useState();
+
+  useEffect(() => {
+    getHotelWithRooms();
+  }, [hotelId]);
+
   if (hotelWithRoomsLoading) {
     return <Splash loading />;
   }
