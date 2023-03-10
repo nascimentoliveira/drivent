@@ -1,8 +1,11 @@
 import HotelChoice from '../../../components/Dashboard/Hotel/HotelChoice';
-
-import HotelBooking from '../../../components/Dashboard/Hotel/HotelBooking';
+import SelectHotel from '../../../components/Dashboard/Hotel/SelectHotel';
 
 export default function Hotel() {
-  /* return 'Hotel: Em breve!'; */
-  return <HotelChoice hotelId={1} />;
+  return (
+    <>
+      <SelectHotel />
+      <HotelChoice hotelId={1} />
+    </>
+  );
 }

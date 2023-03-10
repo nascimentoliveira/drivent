@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Text from '../../Text';
 import HotelCard from './HotelCard';
 
-export default function HotelBooking() {
+export default function SelectHotel() {
   return (
     <Container>
       <Typography variant="h4">Escolha de hotel e quarto</Typography>
@@ -25,6 +25,7 @@ export default function HotelBooking() {
 
 const Container = styled.div`
   width: 100%;
+  margin-bottom: 25px;
 
   .subtitle {
     margin-top: 10px;
