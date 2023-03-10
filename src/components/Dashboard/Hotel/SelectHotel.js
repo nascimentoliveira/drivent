@@ -1,30 +1,8 @@
-import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import Text from '../../Text';
 import HotelCard from './HotelCard';
-import useToken from '../../../hooks/useToken';
-import { getHotel } from '../../../services/hotelApi';
 
-export default function SelectHotel() {
-  const [hotels, setHotels] = useState([]);
-  const [selectedHotelId, setSelectedHotelId] = useState(0);
-  const token = useToken();
-
-  function selectHotel(id) {
-    if (id !== 0 && selectedHotelId !== id) {
-      setSelectedHotelId(id);
-      return;
-    }
-  }
-
-  async function listHotels() {
-    setHotels(await getHotel(token));
-  }
-
-  useEffect(() => {
-    listHotels();
-  }, [selectedHotelId]);
-
+export default function SelectHotel({ hotels, selectedHotel, setSelectedHotel }) {
   return (
     <Container>
       <div className="subtitle">
@@ -32,12 +10,12 @@ export default function SelectHotel() {
       </div>
 
       <div className="hotels">
-        {hotels.map((value, index) => (
+        {hotels.map((hotel, index) => (
           <HotelCard
             key={index}
-            id={value.id}
-            selectHotel={selectHotel}
-            selectedHotelId={selectedHotelId}
+            hotel={hotel}
+            selectedHotel={selectedHotel}
+            setSelectedHotel={setSelectedHotel}
           />
         ))}
       </div>
