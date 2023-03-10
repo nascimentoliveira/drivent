@@ -5,7 +5,7 @@ export default function Hotel() {
   return (
     <>
       <SelectHotel />
-      <HotelChoice hotelId={1} />
+      {/* <HotelChoice hotelId={1} /> */}
     </>
   );
 }
