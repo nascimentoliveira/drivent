@@ -1,4 +1,3 @@
-import { Typography } from '@material-ui/core';
 import styled from 'styled-components';
 import Text from '../../Text';
 import HotelCard from './HotelCard';
@@ -6,7 +5,6 @@ import HotelCard from './HotelCard';
 export default function SelectHotel() {
   return (
     <Container>
-      <Typography variant="h4">Escolha de hotel e quarto</Typography>
       <div className="subtitle">
         <Text text={'Primeiro, escolha seu hotel'}></Text>
       </div>
@@ -28,7 +26,7 @@ const Container = styled.div`
   margin-bottom: 25px;
 
   .subtitle {
-    margin-top: 10px;
+    margin-top: 20px;
   }
 
   .hotels {
