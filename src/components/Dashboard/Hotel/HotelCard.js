@@ -1,9 +1,20 @@
+import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
-export default function HotelCard() {
+export default function HotelCard({ id, selectedHotelId, selectHotel }) {
+  const [selected, setSelected]= useState(false);
+
+  useEffect(() => {
+    if (selectedHotelId === id) {
+      setSelected(true);
+    } else {
+      setSelected(false);
+    }
+  }, [selectedHotelId]);
+
   return (
     <>
-      <HotelContainer>
+      <HotelContainer selected={selected} onClick={() => {selectHotel(id);}}>
         <img src="https://static.vecteezy.com/ti/fotos-gratis/t2/2680156-belo-luxo-guarda-sol-e-cadeira-ao-redor-piscina-externa-no-hotel-e-resort-com-coqueiro-palmeira-no-ceu-azul-gratis-foto.jpg" alt="hotel" />
         <h5>Driven Resort</h5>
         <Info>
@@ -24,7 +35,7 @@ const HotelContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  background-color: #EBEBEB;
+  background: ${props => (props.selected ? '#FFEED2' : '#EBEBEB')};
   border-radius: 10px;
   padding: 16px 14px;
   margin: 20px 19px 19px 0px;
