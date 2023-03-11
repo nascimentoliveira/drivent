@@ -1,6 +1,6 @@
 import { Typography } from '@material-ui/core';
 import HotelArea from '../../../components/Dashboard/Hotel/HotelArea';
-import { usePayment } from '../../../hooks/api/usePayment';
+import usePayment from '../../../hooks/api/usePayment';
 import Text from '../../../components/Text';
 import styled from 'styled-components';
 import Splash from '../../../components/Splash';
