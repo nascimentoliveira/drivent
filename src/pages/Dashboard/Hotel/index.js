@@ -6,7 +6,6 @@ export default function Hotel() {
     <>
       <Typography variant="h4">Escolha de hotel e quarto</Typography>
       <HotelArea />
-      {/* <HotelChoice hotelId={1} /> */}
     </>
   );
 }
