@@ -7,7 +7,6 @@ import Splash from '../../../components/Splash';
 
 export default function Hotel() {
   const { payment, paymentLoading } = usePayment();
-  console.log(payment);
 
   if (paymentLoading) {
     return <Splash loading />;

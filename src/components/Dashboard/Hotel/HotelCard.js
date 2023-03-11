@@ -5,6 +5,11 @@ import styled from 'styled-components';
 export default function HotelCard({ hotel, selectedHotel, setSelectedHotel }) {
   const [accommodation, setAccommodation] = useState('');
   const [vacancies, setVacancies] = useState(0);
+  let options = {
+    single: false,
+    double: false,
+    triple: false
+  };
 
   useEffect(() => {
     roomsCapacity(hotel);
@@ -22,16 +27,29 @@ export default function HotelCard({ hotel, selectedHotel, setSelectedHotel }) {
   }
 
   function typesAccommodation(types) {
-    if (types.includes(1)) {
+    if (types.includes(1) && options.single === false) {
       setAccommodation(prevAccommodation => prevAccommodation + 'Single ');
+      options.single = true;
     }
-  
-    if (types.includes(2)) {
+    if (types.includes(2) && options.double === false) {
       setAccommodation(prevAccommodation => prevAccommodation + 'Double ');
+      options.double = true;
     }
-  
-    if(types.includes(3)) {
+    if(types.includes(3) && options.triple === false) {
       setAccommodation(prevAccommodation => prevAccommodation + 'Triple ');
+      options.triple = true;
+    }
+    if(options.single === true && options.double === true) {
+      setAccommodation('Single e Double');
+    }
+    if(options.single === true && options.triple === true) {
+      setAccommodation('Single e Triple');
+    }
+    if(options.double === true && options.triple === true) {
+      setAccommodation('Double e Triple');
+    }
+    if(options.single === true && options.double === true && options.triple === true) {
+      setAccommodation('Single, Double e Triple');
     }
   }
 
