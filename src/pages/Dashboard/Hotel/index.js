@@ -7,6 +7,7 @@ import Splash from '../../../components/Splash';
 
 export default function Hotel() {
   const { payment, paymentLoading } = usePayment();
+  console.log(payment);
 
   if (paymentLoading) {
     return <Splash loading />;
@@ -23,6 +24,19 @@ export default function Hotel() {
         </AlignBox>
       </>
     ); 
+  }
+
+  if(payment.Ticket.TicketType.includesHotel === false) {
+    return (
+      <>
+        <StyledTypography variant="h4">Escolha de hotel e quarto</StyledTypography>
+        <AlignBox>
+          <TextBox>
+            <Text text={'Sua modalidade de ingresso não inclui hospedagem, prossiga para a escolha de atividades'}></Text>
+          </TextBox>
+        </AlignBox>
+      </>
+    );
   }
 
   return (
