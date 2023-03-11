@@ -1,34 +1,76 @@
+import { useState } from 'react';
+import { useEffect } from 'react';
 import styled from 'styled-components';
 
 export default function HotelCard({ hotel, selectedHotel, setSelectedHotel }) {
+  const [accommodation, setAccommodation] = useState('');
+  const [vacancies, setVacancies] = useState(0);
+
+  useEffect(() => {
+    roomsCapacity(hotel);
+    roomVacancies(hotel);
+  }, []);
+
+  function roomsCapacity(hotel) {
+    let types = [];
+    hotel.Rooms.forEach((r) => {
+      if (!types.includes(r.capacity)) {
+        types.push(r.capacity);
+      }
+    });
+    typesAccommodation(types);
+  }
+
+  function typesAccommodation(types) {
+    if (types.includes(1)) {
+      setAccommodation(prevAccommodation => prevAccommodation + 'Single ');
+    }
+  
+    if (types.includes(2)) {
+      setAccommodation(prevAccommodation => prevAccommodation + 'Double ');
+    }
+  
+    if(types.includes(3)) {
+      setAccommodation(prevAccommodation => prevAccommodation + 'Triple ');
+    }
+  }
+
+  function roomVacancies(hotel) {
+    let vacancies = 0;
+    hotel.Rooms.forEach((r) => {
+      vacancies += r.capacity;
+    });
+    let booking = 0;
+    hotel.Rooms.forEach((r) => {
+      booking += r.Booking?.length;
+    });
+    setVacancies(vacancies - booking);
+  }
+
   return (
     <>
-      <HotelContainer 
-        selectedHotel={selectedHotel} 
-        hotel={hotel}
-        onClick={() => setSelectedHotel(hotel)}
-      >
+      <HotelContainer selectedHotel={selectedHotel} hotel={hotel} onClick={() => setSelectedHotel(hotel)}>
         <img src={hotel.image} alt="hotel" />
         <h5>{hotel.name}</h5>
         <Info>
           <h6>Tipos de acomodação:</h6>
-          <p>Single e double</p>
+          <p>{accommodation}</p>
           <h6>Vagas disponíveis:</h6>
-          <p>102</p>
+          <p>{vacancies}</p>
         </Info>
       </HotelContainer>
     </>
   );
 }
 
-const HotelContainer = styled.div`
+export const HotelContainer = styled.div`
   width: 196px;
   height: 264px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  background-color: ${props => (props.selectedHotel?.id === props.hotel.id ? '#FFEED2' : '#EBEBEB')};
+  background-color: ${(props) => (props.selectedHotel?.id === props.hotel.id ? '#FFEED2' : '#EBEBEB')};
   border-radius: 10px;
   padding: 16px 14px;
   margin: 20px 19px 19px 0px;
@@ -53,7 +95,7 @@ const HotelContainer = styled.div`
   }
 `;
 
-const Info = styled.div`
+export const Info = styled.div`
   width: 196px;
   height: 264px;
   display: flex;
@@ -72,7 +114,7 @@ const Info = styled.div`
     color: #3c3c3c;
     word-wrap: break-word;
   }
-  
+
   p {
     width: 100%;
     font-family: 'Roboto', sans-serif;
