@@ -33,7 +33,7 @@ export default function HotelSummary({ booking }) {
             {booking.Room.name} ({accommodationType})
           </p>
           <h6>Pessoas no seu quarto:</h6>
-          <p>{accommodationType === 'Single' || roommate === 0 ? 'Você' : `Você e mais ${roommate}`}</p>
+          <p>{accommodationType === 'Single' || roommate === 0 ? 'Somente você' : `Você e mais ${roommate}`}</p>
         </Info>
       </HotelContainer>
     </OrderSummary>

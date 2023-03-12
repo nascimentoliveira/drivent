@@ -6,12 +6,13 @@ import { useState, useEffect } from 'react';
 import Text from '../../Text';
 import ConfirmRoom from './ConfirmRoom';
 
-export default function HotelChoice({ hotelId, setBookingSummary }) {
+export default function HotelChoice({ hotelId, setBookingSummary, changeInProgress, setChangeInProgress, booking }) {
   const { hotelWithRooms, hotelWithRoomsLoading, getHotelWithRooms } = useHotelRooms(hotelId);
   const [choosenRoom, setChoosenRoom] = useState();
 
   useEffect(() => {
     getHotelWithRooms();
+    setChoosenRoom();
   }, [hotelId]);
 
   if (hotelWithRoomsLoading) {
@@ -23,10 +24,24 @@ export default function HotelChoice({ hotelId, setBookingSummary }) {
       <Text text={'Ótima pedida! Agora escolha seu quarto'} />
       <RoomsContainer>
         {hotelWithRooms.Rooms.map((room) => (
-          <RoomContainer key={room.id} room={room} setChoosenRoom={setChoosenRoom} choosenRoom={choosenRoom} />
+          <RoomContainer 
+            key={room.id} 
+            room={room} 
+            setChoosenRoom={setChoosenRoom} 
+            choosenRoom={choosenRoom} 
+            alreadyBooked={booking?.Room.id === room.id}
+          />
         ))}
       </RoomsContainer>
-      <ConfirmRoom roomId={choosenRoom} setBookingSummary={setBookingSummary} />
+      { choosenRoom && 
+        <ConfirmRoom 
+          booking={booking}
+          roomId={choosenRoom} 
+          setBookingSummary={setBookingSummary} 
+          changeInProgress={changeInProgress} 
+          setChangeInProgress={setChangeInProgress}
+        />
+      }
     </>
   );
 }

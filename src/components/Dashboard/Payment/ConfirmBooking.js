@@ -49,6 +49,7 @@ export const ConfirmBookingButton = styled.button`
   width: 162px;
   height: 37px;
   background-color: #e0e0e0;
+  margin-right: 20px;
   box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.25);
   border-radius: 4px;
   border: none;
@@ -65,5 +66,9 @@ export const ConfirmBookingButton = styled.button`
   &:hover {
     cursor: pointer;
     background-color: #efefef;
+  }
+
+  &:disabled {
+    cursor: wait;
   }
 `;

@@ -4,7 +4,7 @@ import { getHotel } from '../../../services/hotelApi';
 import SelectHotel from '../../../components/Dashboard/Hotel/SelectHotel';
 import HotelChoice from '../../../components/Dashboard/Hotel/HotelChoice';
 
-export default function HotelArea({ setBookingSummary }) {
+export default function HotelArea({ setBookingSummary, changeInProgress, setChangeInProgress, booking }) {
   const [hotels, setHotels] = useState([]);
   const [selectedHotel, setSelectedHotel] = useState();
   const token = useToken();
@@ -22,7 +22,13 @@ export default function HotelArea({ setBookingSummary }) {
       />
 
       {selectedHotel?.id !== undefined &&
-        <HotelChoice hotelId={selectedHotel.id} setBookingSummary={setBookingSummary} />
+        <HotelChoice 
+          hotelId={selectedHotel.id} 
+          setBookingSummary={setBookingSummary} 
+          changeInProgress={changeInProgress}
+          setChangeInProgress={setChangeInProgress}
+          booking={booking}
+        />
       }
     </>
   );
