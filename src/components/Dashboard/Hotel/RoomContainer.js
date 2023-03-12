@@ -1,20 +1,25 @@
 import styled from 'styled-components';
 import { BsPerson, BsFillPersonFill } from 'react-icons/bs';
 import { useEffect, useState } from 'react';
-export default function RoomContainer({ room, setChoosenRoom, choosenRoom }) {
+
+export default function RoomContainer({ room, setChoosenRoom, choosenRoom, alreadyBooked }) {
   const [availableRooms, setAvailableRooms] = useState(room.capacity - room.Booking.length);
-  useEffect(() => {
+  const crowdedRoom = room.capacity === room.Booking.length;
+
+  useEffect(() => {  
     if (room.id === choosenRoom) {
       setAvailableRooms(room.capacity - room.Booking.length - 1);
     } else {
       setAvailableRooms(room.capacity - room.Booking.length);
     }
   }, [choosenRoom]);
+  
   return (
     <Room
       choosenRoom={choosenRoom}
       room={room}
-      disabled={room.capacity === room.Booking.length}
+      disabled={ crowdedRoom || alreadyBooked }
+      title={crowdedRoom ? 'Não há vagas neste quarto' : alreadyBooked ? 'Este é o seu quarto atual' : 'Clique para selecionar este quarto'}
       onClick={() => setChoosenRoom(room.id)}
     >
       <p>{room.name}</p>
@@ -59,6 +64,7 @@ const Room = styled.button`
   :disabled {
     background: #e9e9e9;
     border: 1px solid #cecece;
+    cursor: not-allowed;
     p {
       color: #9d9d9d;
     }
