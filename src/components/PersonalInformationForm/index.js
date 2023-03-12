@@ -62,7 +62,6 @@ export default function PersonalInformationForm() {
         await saveEnrollment(newData);
         toast('Informações salvas com sucesso!');
       } catch (err) {
-        console.log(data.birthday);
         toast('Não foi possível salvar suas informações!');
       }
     },

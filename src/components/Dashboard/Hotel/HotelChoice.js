@@ -6,7 +6,7 @@ import { useState, useEffect } from 'react';
 import Text from '../../Text';
 import ConfirmRoom from './ConfirmRoom';
 
-export default function HotelChoice({ hotelId }) {
+export default function HotelChoice({ hotelId, setBookingSummary }) {
   const { hotelWithRooms, hotelWithRoomsLoading, getHotelWithRooms } = useHotelRooms(hotelId);
   const [choosenRoom, setChoosenRoom] = useState();
 
@@ -26,7 +26,7 @@ export default function HotelChoice({ hotelId }) {
           <RoomContainer key={room.id} room={room} setChoosenRoom={setChoosenRoom} choosenRoom={choosenRoom} />
         ))}
       </RoomsContainer>
-      <ConfirmRoom roomId={choosenRoom} />
+      <ConfirmRoom roomId={choosenRoom} setBookingSummary={setBookingSummary} />
     </>
   );
 }
