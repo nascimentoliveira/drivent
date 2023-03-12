@@ -6,8 +6,6 @@ export default function RoomContainer({ room, setChoosenRoom, choosenRoom, alrea
   const [availableRooms, setAvailableRooms] = useState(room.capacity - room.Booking.length);
   const crowdedRoom = room.capacity === room.Booking.length;
 
-  console.log('RoomContainer');
-
   useEffect(() => {  
     if (room.id === choosenRoom) {
       setAvailableRooms(room.capacity - room.Booking.length - 1);

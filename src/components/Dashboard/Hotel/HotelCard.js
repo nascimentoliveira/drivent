@@ -11,10 +11,7 @@ export default function HotelCard({ hotel, selectedHotel, setSelectedHotel }) {
     triple: false,
   };
 
-  console.log('HotelCard');
-
   useEffect(() => {
-    console.log('HotelCard useEffect');
     roomsCapacity(hotel);
     roomVacancies(hotel);
   }, []);
