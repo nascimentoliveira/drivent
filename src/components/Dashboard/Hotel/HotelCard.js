@@ -5,6 +5,11 @@ import styled from 'styled-components';
 export default function HotelCard({ hotel, selectedHotel, setSelectedHotel }) {
   const [accommodation, setAccommodation] = useState('');
   const [vacancies, setVacancies] = useState(0);
+  let options = {
+    single: false,
+    double: false,
+    triple: false,
+  };
 
   useEffect(() => {
     roomsCapacity(hotel);
@@ -22,16 +27,29 @@ export default function HotelCard({ hotel, selectedHotel, setSelectedHotel }) {
   }
 
   function typesAccommodation(types) {
-    if (types.includes(1)) {
-      setAccommodation(prevAccommodation => prevAccommodation + 'Single ');
+    if (types.includes(1) && options.single === false) {
+      setAccommodation((prevAccommodation) => prevAccommodation + 'Single ');
+      options.single = true;
     }
-  
-    if (types.includes(2)) {
-      setAccommodation(prevAccommodation => prevAccommodation + 'Double ');
+    if (types.includes(2) && options.double === false) {
+      setAccommodation((prevAccommodation) => prevAccommodation + 'Double ');
+      options.double = true;
     }
-  
-    if(types.includes(3)) {
-      setAccommodation(prevAccommodation => prevAccommodation + 'Triple ');
+    if (types.includes(3) && options.triple === false) {
+      setAccommodation((prevAccommodation) => prevAccommodation + 'Triple ');
+      options.triple = true;
+    }
+    if (options.single === true && options.double === true) {
+      setAccommodation('Single e Double');
+    }
+    if (options.single === true && options.triple === true) {
+      setAccommodation('Single e Triple');
+    }
+    if (options.double === true && options.triple === true) {
+      setAccommodation('Double e Triple');
+    }
+    if (options.single === true && options.double === true && options.triple === true) {
+      setAccommodation('Single, Double e Triple');
     }
   }
 
@@ -48,22 +66,20 @@ export default function HotelCard({ hotel, selectedHotel, setSelectedHotel }) {
   }
 
   return (
-    <>
-      <HotelContainer selectedHotel={selectedHotel} hotel={hotel} onClick={() => setSelectedHotel(hotel)}>
-        <img src={hotel.image} alt="hotel" />
-        <h5>{hotel.name}</h5>
-        <Info>
-          <h6>Tipos de acomodação:</h6>
-          <p>{accommodation}</p>
-          <h6>Vagas disponíveis:</h6>
-          <p>{vacancies}</p>
-        </Info>
-      </HotelContainer>
-    </>
+    <HotelContainer selectedHotel={selectedHotel} hotel={hotel} onClick={() => setSelectedHotel(hotel)}>
+      <img src={hotel.image} alt="hotel" />
+      <h5>{hotel.name}</h5>
+      <Info>
+        <h6>Tipos de acomodação:</h6>
+        <p>{accommodation}</p>
+        <h6>Vagas disponíveis:</h6>
+        <p>{vacancies}</p>
+      </Info>
+    </HotelContainer>
   );
 }
 
-export const HotelContainer = styled.div`
+const HotelContainer = styled.div`
   width: 196px;
   height: 264px;
   display: flex;
