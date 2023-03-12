@@ -3,6 +3,7 @@ import { useBooking } from '../../../hooks/api/useBooking';
 import { ConfirmBookingButton, ConfirmBookingStyle } from '../Payment/ConfirmBooking';
 import useChangeRoom from '../../../hooks/api/useChangeBooking';
 import styled from 'styled-components';
+import Swal from 'sweetalert2';
 
 export default function ConfirmRoom({ booking, roomId, setBookingSummary, changeInProgress, setChangeInProgress }) {
   const { bookingLoading, postBooking } = useBooking();
@@ -11,13 +12,27 @@ export default function ConfirmRoom({ booking, roomId, setBookingSummary, change
   async function submit(event, roomId) {
     event.preventDefault();
     if (changeInProgress) {
-      try {
-        await changeRoom(booking.id, roomId);
-        toast('Seu quarto foi alterado com sucesso!');
-        setChangeInProgress(false);
-      } catch (error) {
-        toast('Não foi possível alterar o seu quarto!');
-      }
+      await(Swal.fire({
+        position: 'center',
+        icon: 'warning',
+        title: 'Deseja realmente trocar de quarto?',
+        showCancelButton: true,
+        cancelButtonText: 'Não, continuar com anterior',
+        confirmButtonText: 'Sim, desejo alterar',
+        confirmButtonColor: '#636C74',
+        cancelButtonColor: '#EA8F8F',
+      })).then(async(result) => {
+        try { 
+          if (result.isConfirmed) {
+            await changeRoom(booking.id, roomId);
+            toast('Seu quarto foi alterado com sucesso!');
+            setChangeInProgress(false);
+          } else {
+            setChangeInProgress(false);
+          }
+        } catch (error) {
+          toast('Não foi possível alterar o seu quarto!');
+        }});
     } else {
       try {
         await postBooking(roomId);
