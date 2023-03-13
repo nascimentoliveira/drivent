@@ -26,12 +26,10 @@ export default function Hotel() {
 
   if(!payment) {
     forbiddenErrorMessage = 'Você precisa ter confirmado pagamento antes de fazer a escolha da hospedagem';
-  }
-
-  if(!payment.Ticket.TicketType.includesHotel) {
+  } else if (!payment.Ticket.TicketType.includesHotel) {
     forbiddenErrorMessage = 'Sua modalidade de ingresso não inclui hospedagem, prossiga para a escolha de atividades';
   }
-
+  
   if(forbiddenErrorMessage) {
     return (
       <>
