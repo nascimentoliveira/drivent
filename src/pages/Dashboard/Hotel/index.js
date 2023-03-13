@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Typography } from '@material-ui/core';
-import HotelArea from '../../../components/Dashboard/Hotel/HotelArea';
+import BookingArea from '../../../components/Dashboard/Hotel/BookingArea';
 import usePayment from '../../../hooks/api/usePayment';
 import Text from '../../../components/Text';
 import styled from 'styled-components';
@@ -54,7 +54,7 @@ export default function Hotel() {
       }
 
       {!booking || changeInProgress ? 
-        <HotelArea 
+        <BookingArea 
           setBookingSummary={setBookingSummary} 
           changeInProgress={changeInProgress} 
           setChangeInProgress={setChangeInProgress}

@@ -6,7 +6,7 @@ import { useState, useEffect } from 'react';
 import Text from '../../Text';
 import ConfirmRoom from './ConfirmRoom';
 
-export default function HotelChoice({ hotelId, setBookingSummary, changeInProgress, setChangeInProgress, booking }) {
+export default function RoomChoice({ hotelId, setBookingSummary, changeInProgress, setChangeInProgress, booking }) {
   const { hotelWithRooms, hotelWithRoomsLoading, getHotelWithRooms } = useHotelRooms(hotelId);
   const [choosenRoom, setChoosenRoom] = useState();
 
@@ -50,6 +50,5 @@ const RoomsContainer = styled.div`
   margin: 33px 0 46px 0;
   display: flex;
   flex-wrap: wrap;
-  max-height: 204px;
   max-width: 830px;
 `;

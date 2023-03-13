@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 import useToken from '../../../hooks/useToken';
 import { getHotel } from '../../../services/hotelApi';
-import SelectHotel from '../../../components/Dashboard/Hotel/SelectHotel';
-import HotelChoice from '../../../components/Dashboard/Hotel/HotelChoice';
+import SelectHotel from './SelectHotel';
+import RoomChoice from './RoomChoice';
 
-export default function HotelArea({ setBookingSummary, changeInProgress, setChangeInProgress, booking }) {
+export default function BookingArea({ setBookingSummary, changeInProgress, setChangeInProgress, booking }) {
   const [hotels, setHotels] = useState([]);
   const [selectedHotel, setSelectedHotel] = useState();
   const token = useToken();
@@ -22,7 +22,7 @@ export default function HotelArea({ setBookingSummary, changeInProgress, setChan
       />
 
       {selectedHotel?.id !== undefined &&
-        <HotelChoice 
+        <RoomChoice 
           hotelId={selectedHotel.id} 
           setBookingSummary={setBookingSummary} 
           changeInProgress={changeInProgress}
