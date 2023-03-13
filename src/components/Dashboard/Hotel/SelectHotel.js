@@ -34,5 +34,15 @@ const Container = styled.div`
   .hotels {
     display: flex;
     overflow-x: scroll;
+    &::-webkit-scrollbar {
+      height: 6px;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: #F1F1F1;  
+      border-radius: 6px;
+    }
+    &::-webkit-scrollbar-thumb:hover {
+      background: #CCCCCC;
+    }
   }
 `;

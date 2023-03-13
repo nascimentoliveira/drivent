@@ -69,4 +69,7 @@ const Room = styled.button`
       color: #9d9d9d;
     }
   }
+  @media (max-width: 460px) {
+    width: 140px;
+  }
 `;
