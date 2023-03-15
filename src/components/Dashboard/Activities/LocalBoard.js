@@ -6,10 +6,10 @@ export function LocalBoard({ activities, locals }) {
   return (
     <LocalsContainer>
       {locals.map((l) => (
-        <Local key = {l.id}>
+        <Local key={l.id}>
           <h1>{l.name}</h1>
           <LocalBox locals={locals} l={l}>
-            {activities.map((a) => a.ActivityLocal.id === l.id && <ActivityContainer key = {a.id}activity={a} />)}
+            {activities.map((a) => a.ActivityLocal.id === l.id && <ActivityContainer key={a.id} activity={a} />)}
           </LocalBox>
         </Local>
       ))}
@@ -41,8 +41,18 @@ const LocalBox = styled.div`
   margin-top: 13px;
   display: flex;
   flex-direction: column;
-  min-height: 60vh;
+  height: 60vh;
   border: 1px solid #d7d7d7;
-  overflow-y:auto;
+  overflow-y: auto;
+  &::-webkit-scrollbar {
+    height: 6px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: #f1f1f1;
+    border-radius: 6px;
+  }
+  &::-webkit-scrollbar-thumb:hover {
+    background: #cccccc;
+  }
   border-right: ${(props) => props.locals.indexOf(props.l) + 1 === props.locals.length || 'none'};
 `;

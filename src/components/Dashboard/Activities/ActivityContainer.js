@@ -10,7 +10,7 @@ export function ActivityContainer({ activity }) {
       <EventData>
         <h2>{activity.name}</h2>
         <p>
-          {dayjs(activity.startsAt).add(3, 'hours').format('HH:mm')}-{' '}
+          {dayjs(activity.startsAt).add(3, 'hours').format('HH:mm')}-
           {dayjs(activity.endsAt).add(3, 'hours').format('HH:mm')}
         </p>
       </EventData>
@@ -75,11 +75,12 @@ const CapacityContainer = styled.div`
   }
 `;
 const ActivityBox = styled.div`
+  box-sizing: border-box;
   display: flex;
   justify-content: space-between;
   padding: 10px;
   width: 100%;
-  height: ${(props) => props.height * 80}px;
+  min-height: ${(props) => props.height * 80 + (props.height - 1) * 10}px;
   background: #f1f1f1;
   border-radius: 5px;
   margin-bottom: 10px;

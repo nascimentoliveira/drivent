@@ -11,7 +11,7 @@ export default function Activities() {
   if (activitiesLoading||activitiesLocalsLoading) {
     return <Splash loading />;
   }
-  console.log(activitiesLocals);
+  console.log(activities);
   return (
     <>
       {/*  <>Compotente que mostra os dias para filtrar</> */}
