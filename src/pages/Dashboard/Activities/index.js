@@ -16,7 +16,7 @@ export default function Activities() {
     <>
       {/*  <>Compotente que mostra os dias para filtrar</> */}
       {/* aqui vai ter um ternário, se não tiver activity filtrada e selecionada não vai renderizar o LocalBoard */}
-      <LocalBoard activities={filteredActivities} locals={activitiesLocals}  />
+      <LocalBoard activities={/* filteredActivities */ activities} locals={activitiesLocals}  />
     </>
   );
 }

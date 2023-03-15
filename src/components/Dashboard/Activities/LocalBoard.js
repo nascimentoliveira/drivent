@@ -1,16 +1,15 @@
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import { ActivityContainer } from './ActivityContainer';
 
 export function LocalBoard({ activities, locals }) {
   return (
     <LocalsContainer>
       {locals.map((l) => (
-        <Local>
+        <Local key = {l.id}>
           <h1>{l.name}</h1>
           <LocalBox locals={locals} l={l}>
-            {/*  {activities.map(() => (
-          <></>
-        ))} */}
+            {activities.map((a) => a.ActivityLocal.id === l.id && <ActivityContainer key = {a.id}activity={a} />)}
           </LocalBox>
         </Local>
       ))}
@@ -38,10 +37,12 @@ const Local = styled.div`
 `;
 
 const LocalBox = styled.div`
+  padding: 9px;
   margin-top: 13px;
   display: flex;
   flex-direction: column;
-  min-height: 40vh;
+  min-height: 60vh;
   border: 1px solid #d7d7d7;
+  overflow-y:auto;
   border-right: ${(props) => props.locals.indexOf(props.l) + 1 === props.locals.length || 'none'};
 `;
