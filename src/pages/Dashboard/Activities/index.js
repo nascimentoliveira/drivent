@@ -1,10 +1,17 @@
+import { useState } from 'react';
+import { LocalBoard } from '../../../components/Dashboard/Activities/LocalBoard';
+import Splash from '../../../components/Splash';
+import useGetActivities from '../../../hooks/api/useActivities';
+import useGetActivitiesLocals from '../../../hooks/api/useActivitiesLocals';
 import { Typography } from '@material-ui/core';
 import usePayment from '../../../hooks/api/usePayment';
 import Text from '../../../components/Text';
 import styled from 'styled-components';
-import Splash from '../../../components/Splash';
 
 export default function Activities() {
+  const { activities, activitiesLoading } = useGetActivities();
+  const { activitiesLocals, activitiesLocalsLoading } = useGetActivitiesLocals();
+  const [filteredActivities, setFilteredActivities] = useState([]); // AS ATIVIDADES PARA FILTRAR POR DIA
   const { payment, paymentLoading } = usePayment();
   let forbiddenErrorMessage;
 
@@ -28,8 +35,20 @@ export default function Activities() {
           </TextBox>
         </AlignBox>
       </>
-    ); 
+    );
   }
+  
+  if (activitiesLoading||activitiesLocalsLoading) {
+    return <Splash loading />;
+  }
+  
+  return (
+    <>
+      {/*  <>Compotente que mostra os dias para filtrar</> */}
+      {/* aqui vai ter um ternário, se não tiver activity filtrada e selecionada não vai renderizar o LocalBoard */}
+      <LocalBoard activities={/* filteredActivities */ activities} locals={activitiesLocals}  />
+    </>
+  );
 }
 
 const StyledTypography = styled(Typography)`
