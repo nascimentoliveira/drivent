@@ -1,21 +1,23 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { LocalBoard } from '../../../components/Dashboard/Activities/LocalBoard';
 import Splash from '../../../components/Splash';
 import useGetActivities from '../../../hooks/api/useActivities';
-import useGetActivitiesLocals from '../../../hooks/api/useActivitiesLocals';
 import { Typography } from '@material-ui/core';
 import usePayment from '../../../hooks/api/usePayment';
 import Text from '../../../components/Text';
 import styled from 'styled-components';
+import EventDays from '../../../components/Dashboard/Activities/EventDays';
 
 export default function Activities() {
   const { activities, activitiesLoading } = useGetActivities();
-  const { activitiesLocals, activitiesLocalsLoading } = useGetActivitiesLocals();
-  const [filteredActivities, setFilteredActivities] = useState([]); // AS ATIVIDADES PARA FILTRAR POR DIA
   const { payment, paymentLoading } = usePayment();
+  const [selected, setSelected] = useState();
   let forbiddenErrorMessage;
 
-  if (paymentLoading) {
+  useEffect(() => {
+  }, [selected]);
+
+  if (paymentLoading || activitiesLoading) {
     return <Splash loading />;
   }
 
@@ -38,15 +40,14 @@ export default function Activities() {
     );
   }
   
-  if (activitiesLoading||activitiesLocalsLoading) {
-    return <Splash loading />;
-  }
-  
   return (
     <>
-      {/*  <>Compotente que mostra os dias para filtrar</> */}
-      {/* aqui vai ter um ternário, se não tiver activity filtrada e selecionada não vai renderizar o LocalBoard */}
-      <LocalBoard activities={/* filteredActivities */ activities} locals={activitiesLocals}  />
+      <EventDays 
+        activities={activities}
+        selected={selected}
+        setSelected={setSelected}
+      /> 
+      {selected && <LocalBoard locals={activities[selected]} />}
     </>
   );
 }

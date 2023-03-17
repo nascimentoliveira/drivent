@@ -2,9 +2,8 @@ import styled from 'styled-components';
 import { RiLoginBoxLine } from 'react-icons/ri';
 import { AiOutlineCloseCircle } from 'react-icons/ai';
 import dayjs from 'dayjs';
-export function ActivityContainer({ activity }) {
+export function ActivityContainer({ activity, capacity }) {
   const height = (new Date(activity.endsAt).getTime() - new Date(activity.startsAt).getTime()) / 3600000;
-
   return (
     <ActivityBox height={height}>
       <EventData>
@@ -14,11 +13,11 @@ export function ActivityContainer({ activity }) {
           {dayjs(activity.endsAt).add(3, 'hours').format('HH:mm')}
         </p>
       </EventData>
-      <CapacityContainer activity={activity}>
-        {activity.ActivityLocal.capacity - activity.ActivityRegistration.length > 0 ? (
+      <CapacityContainer activity={activity} capacity={capacity}>
+        {capacity - activity.ActivityRegistration.length > 0 ? (
           <>
             <RiLoginBoxLine color="#078632" />
-            <p>{activity.ActivityLocal.capacity - activity.ActivityRegistration.length} vagas </p>
+            <p>{capacity - activity.ActivityRegistration.length} vagas </p>
           </>
         ) : (
           <>
@@ -70,8 +69,7 @@ const CapacityContainer = styled.div`
     font-size: 9px;
     line-height: 11px;
     text-align: center;
-    color: ${(props) =>
-    props.activity.ActivityLocal.capacity - props.activity.ActivityRegistration.length > 0 ? '#078632' : '#CC6666'};
+    color: ${(props) => props.capacity - props.activity.ActivityRegistration.length > 0 ? '#078632' : '#CC6666'};
   }
 `;
 const ActivityBox = styled.div`
