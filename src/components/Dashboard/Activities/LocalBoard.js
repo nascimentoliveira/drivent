@@ -1,15 +1,14 @@
-import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { ActivityContainer } from './ActivityContainer';
 
-export function LocalBoard({ activities, locals }) {
+export function LocalBoard({ locals }) {
   return (
     <LocalsContainer>
-      {locals.map((l) => (
-        <Local key={l.id}>
-          <h1>{l.name}</h1>
-          <LocalBox locals={locals} l={l}>
-            {activities.map((a) => a.ActivityLocal.id === l.id && <ActivityContainer key={a.id} activity={a} />)}
+      {Object.keys(locals).map((value, index) => (
+        <Local key={index}>
+          <h1>{locals[value].name}</h1>
+          <LocalBox isLast={Object.keys(locals).length-1 === index}>
+            {locals[value].Activity.map((activity) => <ActivityContainer key={activity.id} activity={activity} capacity={locals[value].capacity} />)}
           </LocalBox>
         </Local>
       ))}
@@ -20,11 +19,15 @@ const LocalsContainer = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
+  height: 70%;
 `;
+
 const Local = styled.div`
   width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
+
   h1 {
     font-family: 'Roboto';
     font-style: normal;
@@ -41,11 +44,14 @@ const LocalBox = styled.div`
   margin-top: 13px;
   display: flex;
   flex-direction: column;
-  height: 60vh;
+  height: 100%;
   border: 1px solid #d7d7d7;
   overflow-y: auto;
+  border-right: ${(props) => props.isLast || 'none'};
+
   &::-webkit-scrollbar {
-    height: 6px;
+    height: 8px;
+    width: 8px;
   }
   &::-webkit-scrollbar-thumb {
     background: #f1f1f1;
@@ -54,5 +60,5 @@ const LocalBox = styled.div`
   &::-webkit-scrollbar-thumb:hover {
     background: #cccccc;
   }
-  border-right: ${(props) => props.locals.indexOf(props.l) + 1 === props.locals.length || 'none'};
+  
 `;
