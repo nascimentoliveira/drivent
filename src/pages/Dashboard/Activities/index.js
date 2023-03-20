@@ -30,7 +30,7 @@ export default function Activities() {
   if(forbiddenErrorMessage) {
     return (
       <>
-        <StyledTypography variant="h4">Escolha de hotel e quarto</StyledTypography>
+        <StyledTypography variant="h4">Escolha de atividades</StyledTypography>
         <AlignBox>
           <TextBox>
             <Text text={forbiddenErrorMessage}></Text>
@@ -42,6 +42,7 @@ export default function Activities() {
   
   return (
     <>
+      <Typography variant="h4">Escolha de atividades</Typography>
       <EventDays 
         activities={activities}
         selected={selected}
