@@ -42,7 +42,7 @@ export default function Activities() {
   
   return (
     <>
-      <Typography variant="h4">Escolha de atividades</Typography>
+      <StyledTypography variant="h4">Escolha de atividades</StyledTypography>
       <EventDays 
         activities={activities}
         selected={selected}

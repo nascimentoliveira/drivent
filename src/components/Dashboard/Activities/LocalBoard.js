@@ -20,6 +20,9 @@ const LocalsContainer = styled.div`
   flex-direction: row;
   flex-wrap: nowrap;
   height: 70%;
+  @media (max-width: 890px) {
+    flex-direction: column;
+  }
 `;
 
 const Local = styled.div`
@@ -48,9 +51,7 @@ const LocalBox = styled.div`
   border: 1px solid #d7d7d7;
   overflow-y: auto;
   border-right: ${(props) => props.isLast || 'none'};
-
   &::-webkit-scrollbar {
-    height: 8px;
     width: 8px;
   }
   &::-webkit-scrollbar-thumb {
@@ -60,5 +61,8 @@ const LocalBox = styled.div`
   &::-webkit-scrollbar-thumb:hover {
     background: #cccccc;
   }
-  
+  @media (max-width: 890px) {
+    border-right: 1px solid #d7d7d7;
+    margin-bottom: 30px;
+  }
 `;

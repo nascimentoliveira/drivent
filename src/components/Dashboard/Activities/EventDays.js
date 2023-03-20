@@ -5,9 +5,13 @@ import Text from '../../Text';
 export default function EventDays({ activities, selected, setSelected }) {
   return (
     <DaysContainer>
-      <div className="subtitle">
-        <Text text={'Primeiro, filtre pelo dia do evento: '}></Text>
-      </div>
+      {selected ? (
+        ''
+      ) : (
+        <div className="subtitle">
+          <Text text={'Primeiro, filtre pelo dia do evento: '}></Text>
+        </div>
+      )}
 
       <div className="days">
         {Object.keys(activities).map((value, index) => (
@@ -42,11 +46,9 @@ const DaysContainer = styled.div`
 
 const ButtonDays = styled(ConfirmBookingButton)`
   width: 130px;
-  background-color: ${(props) => props.isSelected ? '#FFD37D' : '#e0e0e0'};
-  transition: .3;
-
+  background-color: ${(props) => (props.isSelected ? '#FFD37D' : '#e0e0e0')};
+  transition: 0.2;
   &:hover {
-    background-color: ${(props) => props.isSelected ? '#FFD37D' : '#efefef'};
+    background-color: ${(props) => (props.isSelected ? '#FFD37D' : '#efefef')};
   }
 `;
-
