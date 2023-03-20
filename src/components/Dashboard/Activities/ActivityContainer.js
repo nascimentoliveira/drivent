@@ -16,12 +16,12 @@ export function ActivityContainer({ activity, capacity }) {
       <CapacityContainer activity={activity} capacity={capacity}>
         {capacity - activity.ActivityRegistration.length > 0 ? (
           <>
-            <RiLoginBoxLine color="#078632" />
+            <RiLoginBoxLine color="#078632" size="20px" />
             <p>{capacity - activity.ActivityRegistration.length} vagas </p>
           </>
         ) : (
           <>
-            <AiOutlineCloseCircle color="#CC6666" />
+            <AiOutlineCloseCircle color="#CC6666" size="20px" />
             <p> Esgotado </p>
           </>
         )}
@@ -35,7 +35,7 @@ const EventData = styled.div`
   flex-direction: column;
   align-items: flex-start;
   border: none;
-  width: 80%;
+  width: 75%;
   border-right: 1px solid #cfcfcf;
   h2 {
     font-family: 'Roboto';
@@ -54,22 +54,29 @@ const EventData = styled.div`
     line-height: 14px;
     color: #343434;
   }
+  @media (max-width: 890px) {
+    width: 68%;
+  }
 `;
 const CapacityContainer = styled.div`
+  width: 20%;
   display: flex;
   flex-direction: column;
-  border: none;
   align-items: center;
   justify-content: center;
+  cursor: ${(props) => props.capacity - props.activity.ActivityRegistration.length > 0 ? 'pointer' : 'default'};
   p {
     margin-top: 4px;
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 400;
-    font-size: 9px;
+    font-size: 10px;
     line-height: 11px;
     text-align: center;
     color: ${(props) => props.capacity - props.activity.ActivityRegistration.length > 0 ? '#078632' : '#CC6666'};
+  }
+  @media (max-width: 890px) {
+    width: 30%;
   }
 `;
 const ActivityBox = styled.div`
