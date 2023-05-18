@@ -1,5 +1,5 @@
 {
-  "name": "drivent-front",
+  "name": "drivent",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -36,6 +36,16 @@
     "eject": "react-scripts eject",
     "prepare": "husky install"
   },
+  "keywords": [
+    "driven.t",
+    "front-end",
+    "react",
+    "driven",
+    "postgres",
+    "express"
+  ],
+  "author": "Thiago Oliveira",
+  "license": "MPL-2.0",
   "eslintConfig": {
     "extends": [
       "react-app",
