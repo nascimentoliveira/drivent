@@ -1,68 +1,57 @@
-![created date - drivent](https://img.shields.io/date/1680145200?color=007ec6&label=created%20at&style=flat-square)
-![license - genie](https://img.shields.io/github/license/nascimentoliveira/genie?color=007ec6&style=flat-square)
-![last commit - genie](https://img.shields.io/github/last-commit/nascimentoliveira/genie?color=007ec6&style=flat-square)
-![repo size - genie](https://img.shields.io/github/repo-size/nascimentoliveira/genie?color=007ec6&style=flat-square)
-![files - genie](https://img.shields.io/github/directory-file-count/nascimentoliveira/genie?color=007ec6&style=flat-square)
-![language - genie](https://img.shields.io/github/languages/top/nascimentoliveira/genie?color=007ec6&style=flat-square)
-![stars - genie](https://img.shields.io/github/stars/nascimentoliveira/genie?color=007ec6&style=flat-square)
-![forks - genie](https://img.shields.io/github/forks/nascimentoliveira/genie?color=007ec6&style=flat-square)
+![created date - drivent](https://img.shields.io/date/1677553200?color=007ec6&label=created%20at&style=flat-square)
+![license - drivent](https://img.shields.io/github/license/nascimentoliveira/drivent?color=007ec6&style=flat-square)
+![last commit - drivent](https://img.shields.io/github/last-commit/nascimentoliveira/drivent?color=007ec6&style=flat-square)
+![repo size - drivent](https://img.shields.io/github/repo-size/nascimentoliveira/drivent?color=007ec6&style=flat-square)
+![files - drivent](https://img.shields.io/github/directory-file-count/nascimentoliveira/drivent?color=007ec6&style=flat-square)
+![language - drivent](https://img.shields.io/github/languages/top/nascimentoliveira/drivent?color=007ec6&style=flat-square)
+![stars - drivent](https://img.shields.io/github/stars/nascimentoliveira/drivent?color=007ec6&style=flat-square)
+![forks - drivent](https://img.shields.io/github/forks/nascimentoliveira/drivent?color=007ec6&style=flat-square)
 
-# 🚧👷🏻 Genie - Plataforma de Gerenciamento de Desejos
+# Driven.t - Plataforma de Gerenciamento de Eventos
 
-> 👷🏻 Genie ainda está sendo desenvolvido! Algumas funcionalidades podem não estar disponíveis.
+Driven.t é uma plataforma de gerenciamento de eventos que permite aos usuários se cadastrarem, adquirirem ingressos e participarem de atividades durante eventos. A plataforma oferece opções de ingressos online e presenciais, além da possibilidade de reserva de quartos de hotéis parceiros. Com o Driven.t, os organizadores podem criar eventos personalizados, enquanto os participantes têm acesso a uma variedade de recursos para aproveitar ao máximo sua experiência.
 
-Genie é uma plataforma inovadora que ajuda os usuários a alcançar seus desejos financeiros, fornecendo uma maneira fácil e eficiente de gerenciar suas economias por meio de micro poupanças. Com o Genie, os usuários podem cadastrar seus desejos, definir metas de valor e prazos para resgate, e acompanhar seu progresso ao longo do tempo.
+>  ⚠️ **IMPORTANTE:** Durante a utilização da plataforma, ao ser redirecionado para a página de pagamento, **NÃO INSIRA DADOS REAIS DE CARTÃO DE CRÉDITO**. Essa é uma versão de demonstração e não realiza transações reais. **UTILIZE DADOS FICTÍCIOS** para evitar qualquer exposição indevida de informações pessoais ou financeiras.
 
-> O código-fonte do back-end da aplicação está hospedado no GitHub em: [Genie Back-end](https://github.com/nascimentoliveira/genie-api)
+> O código-fonte do back-end da aplicação está hospedado no GitHub em: [Driven.t Back-end](https://github.com/nascimentoliveira/drivent-api)
 
-> Genie atualmente pode ser experimentado em: [Genie Live Demo](https://nascimentoliveira-genie.vercel.app)
+> Driven.t atualmente pode ser experimentado em: [Driven.t Live Demo](https://nascimentoliveira-drivent.vercel.app)
 >  
 >> *A primeira requisição ao Live Demo pode levar um pouco mais de tempo para carregar. Isso ocorre porque os servidores são ativados conforme necessário e podem levar alguns instantes para iniciar!*
 
 ## Funcionalidades Principais
 
-- **Cadastro de Usuários:** Os usuários podem se cadastrar na plataforma utilizando um endereço de e-mail e senha.
+- **Cadastro de Usuários:** Os usuários podem se cadastrar na plataforma utilizando um endereço de e-mail e senha. Após o cadastro, os usuários fornecem informações pessoais adicionais, como CPF, endereço, telefone, etc. Com uma conta Driven.t, os usuários podem gerenciar suas participações em eventos, ingressos adquiridos e atividades selecionadas.
 
-- **Conta Poupança:** A plataforma oferece um conta onde os usuários podem depositar ou retirar valores. Isso permite uma gestão centralizada dos recursos financeiros, proporcionando flexibilidade para distribuir e realocar o dinheiro conforme necessário.
+- **Opções de Ingressos:** A plataforma oferece dois tipos de ingressos: online e presencial. Os usuários podem escolher a opção que melhor se adequa às suas preferências e necessidades. Os ingressos online permitem que os usuários participem de eventos remotamente, através de transmissões ao vivo. Se o usuário optar pelo evento presencial, ele pode escolher se deseja adicionar hospedagem à sua reserva. Depois de efetuar o pagamento do ingresso, os usuários têm a oportunidade de escolherem a sua hospedagem, se for o caso, e se inscreverem em atividades oferecidas durante o evento.
 
-- **Cadastro de Desejos:** Os usuários podem criar uma lista personalizada de desejos financeiros, onde cada desejo representa uma meta específica. Eles podem fornecer um nome descritivo e uma imagem representativa para cada desejo.
+- **Hospedagem em Hotéis Parceiros:** Para os usuários que adquirem ingressos presenciais, o Driven.t oferece a opção de se hospedar em hotéis parceiros próximos ao local do evento. Os usuários podem explorar uma lista de hotéis disponíveis, verificar a disponibilidade de quartos e realizar reservas diretamente pela plataforma.
 
-- **Metas e Prazos:** Para cada desejo cadastrado, os usuários podem definir uma meta de valor que desejam alcançar e uma data limite para resgate. Isso permite um planejamento mais preciso e ajuda a manter o foco na conquista dos objetivos financeiros.
-
-- **Metas Secundárias:** Além da meta principal, os usuários têm a flexibilidade de estabelecer metas secundárias com datas e valores específicos. Essas metas secundárias podem ser usadas para dividir o objetivo final em etapas mais gerenciáveis e alcançáveis.
-
-- **Associação com Imagens:** O Genie permite que os usuários personalizem seus desejos adicionando uma imagem associada a cada um deles. Essa funcionalidade visual proporciona uma experiência mais atraente e motivadora, ajudando os usuários a visualizarem seus desejos e se inspirarem para alcançá-los.
-
-- **Distribuição de Recursos:** Com base no saldo da poupança, os usuários podem alocar recursos para cada um dos seus desejos. Eles podem depositar valores nos desejos individuais, acompanhando o progresso de cada meta financeira ao longo do tempo.
-
-- **Retirada de Recursos:** Quando os usuários desejam resgatar recursos da plataforma, eles têm a opção de utilizar o saldo da poupança para realizar a retirada. Isso permite que os usuários aproveitem suas conquistas e utilizem o dinheiro economizado conforme desejarem.
-
-- **Exclusão de Desejos:** Se um usuário decidir excluir um desejo, os valores acumulados para aquele desejo são devolvidos ao saldo da poupança. Isso oferece flexibilidade aos usuários para redefinir suas prioridades e remover desejos que já foram alcançados ou que não são mais relevantes.
+- **Inscrição em Atividades:** 
+As atividades são apresentadas por dia e local, permitindo que os usuários escolham as que desejam participar. Os usuários podem visualizar detalhes das atividades, como horário e localização para tomar decisões informadas.
 
 ## Como Usar
 
-1. Após iniciar a aplicação Genie, você será direcionado para a página inicial. Se você já tem uma conta, faça login usando suas credenciais. Caso contrário, clique em `New to genie? Create an account.` para criar uma nova conta.
+1. Após iniciar a aplicação Driven.t, você será direcionado para a página inicial. Se você já tem uma conta, faça login usando suas credenciais. Caso contrário, clique em `Não possui login? Inscreva-se` para criar uma nova conta.
 
-2. Vocẽ será redirecionado para a sua conta poupança, clique no botão `NEW WISH` para adicionar um novo desejo. Preencha o nome descritivo do desejo, defina uma meta de valor e uma data de resgate.
-Se desejar, faça o upload de uma imagem representativa para o desejo. 
+2. Você será redirecionado à página `Dashboard` e verá um menu lateral, permitindo a navegação pelas seções: `Inscrição`, `Pagamento`, `Hotel`, `Atividades` e `Certificado`. 
 
-3. Após cadastrar um desejo, você pode definir metas secundárias para ajudar a alcançar a meta principal. Procure pela seção de metas secundárias e clique em `ADD SUBGOAL`. Insira os detalhes da meta, como valor e data, e clique em `ADD`. Você pode adicionar quantas metas secundárias forem necessárias. Clique em `SAVE` para adicionar o desejo à sua lista.
+3. `Inscrição`: Após fazer o login, você será solicitado a fornecer seus dados pessoais, como nome completo, data de nascimento, CPF, endereço e telefone. Certifique-se de preencher corretamente essas informações obrigatórias.
 
-4. No painel principal do Genie, você verá o saldo da sua poupança.
-Para distribuir recursos para um desejo, clique no desejo na lista.
-Na página de detalhes do desejo, clique em `DEPOSIT` insira o valor que deseja depositar. Você também pode clicar em `WITHDRAW` para retirar valores do seu desejo. O saldo da sua poupança será atualizado automaticamente e o valor será alocado para o desejo selecionado ou somado, em caso de retirada.
+4. `Pagamento`: aqui ocorre a reserva do ingresso e seu pagamento. Escolha a modalidade do evento desejada e, se aplicável, selecione a opção de hospedagem. Após isso, ocorre o pagamento para confirmar a reserva do insgresso. Insira os dados de seu cartão de crédito. Preencha os detalhes necessários e conclua o processo de pagamento.
+   > ⚠️ **IMPORTANTE:** Durante a utilização do projeto, ao ser redirecionado para a página de pagamento, **NÃO INSIRA DADOS REAIS DE CARTÃO DE CRÉDITO**. Essa é uma versão de demonstração e não realiza transações reais. **UTILIZE DADOS FICTÍCIOS** para evitar qualquer exposição indevida de informações pessoais ou financeiras.
 
-5. Se desejar resgatar recursos da plataforma, vá para a página da sua conta. Insira o valor que deseja retirar e clique em `WITHDRAW`.
-O valor será subtraído da sua conta poupança e estará disponível para utilização externa.
 
-6. Para excluir um desejo, acesse a página de detalhes do desejo e clique em `DELETE`. O desejo será removido da lista e os valores acumulados serão devolvidos saldo da sua poupança.
+5. `Hotel` (Apenas para ingressos presenciais com hospedagem): Caso tenha selecionado a opção de ingresso presencial com hospedagem, você será direcionado para a seleção de hotel. Navegue pela lista de hotéis parceiros disponíveis, verifique a disponibilidade de quartos e faça sua escolha. Em seguida, confirme a reserva do hotel.
 
-Agora você está pronto para utilizar todas as funcionalidades do Genie para gerenciar seus desejos financeiros. Aproveite a plataforma e acompanhe seu progresso em direção às suas metas!
+6. `Atividades`: Após efetuar o pagamento do ticket, você terá a oportunidade de se inscrever nas atividades oferecidas durante o evento. Verifique a programação do evento, escolha as atividades que deseja participar e confirme sua inscrição.
+
+Agora você está pronto para desfrutar do evento e aproveitar todas as atividades disponíveis na plataforma!
 
 
 ## Tecnologias Utilizadas
 
-Genie está sendo desenvolvido utilizando as seguintes tecnologias:
+Driven.t foi desenvolvido utilizando as seguintes tecnologias:
 
 - Linguagem de Programação: [Javascript](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference).
 - Front-end
@@ -74,7 +63,7 @@ Genie está sendo desenvolvido utilizando as seguintes tecnologias:
     - [Sweet Alert](https://sweetalert2.github.io/): Biblioteca JavaScript para exibir belas caixas de diálogo modais.
     - [React Toastify](https://fkhadra.github.io/react-toastify/introduction): Biblioteca para exibir notificações e mensagens de toast na aplicação.
     - [React Loader Spinner](https://mhnpd.github.io/react-loader-spinner/): Biblioteca para exibir indicadores de carregamento de componentes na página.
-
+    - [React Credit Card](https://www.npmjs.com/package/react-credit-cards): Biblioteca que fornece componentes para exibição e interação com cartões de crédito em aplicações React.
 - Back-end
     - [TypeScript](https://www.typescriptlang.org/): Linguagem de programação de código aberto que estende a sintaxe do JavaScript, fornecendo tipagem estática opcional e outros recursos para melhorar o desenvolvimento.
     - [Node.js](https://nodejs.org/en/about): Plataforma de desenvolvimento JavaScript assíncrona baseada no motor V8 do Chrome.
@@ -97,12 +86,12 @@ Essas tecnologias foram escolhidas para proporcionar uma experiência de desenvo
 ## Instalação
 1. Clone o repositório do projeto:
     ```bash
-    git clone https://github.com/nascimentoliveira/genie.git
+    git clone https://github.com/nascimentoliveira/drivent.git
     ```
 
 2. Acesse o diretório do projeto.
    ```bash
-   cd genie
+   cd drivent
    ```
 
 3. Instale as dependências:
